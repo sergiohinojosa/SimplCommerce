@@ -14,6 +14,6 @@ jobs:
     inputs:
       dockerRegistryServiceConnection: 'shinojosa DockerHub'
       repository: 'simplcommerce-azure'
-      Dockerfile: 'shinojosa.Dockerfile'
+      Dockerfile: shinojosa.Dockerfile
 
   
