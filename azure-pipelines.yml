@@ -145,3 +145,4 @@ jobs:
   - task: ContainerBuild@0
     inputs:
       Dockerfile: 'Dockerfile-sqlite'
+  
