@@ -13,7 +13,7 @@ variables:
   dockerRegistryServiceConnection: '728bdfd1-c1fc-4af8-81cc-2e5cb67ca689'
   imageRepository: 'sergiohinojosasimplcommerce'
   containerRegistry: 'buildingthefuturedynatrace.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/shinojosa.Dockerfile'
+  dockerfilePath: 'shinojosa.Dockerfile'
   tag: '$(Build.BuildId)'
   
   # Agent VM image name
