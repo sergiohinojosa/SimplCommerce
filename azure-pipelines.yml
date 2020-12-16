@@ -142,3 +142,6 @@ jobs:
     inputs:
       codeCoverageTool: Cobertura
       summaryFileLocation: $(Build.SourcesDirectory)/coverlet/reports/Cobertura.xml  
+  - task: ContainerBuild@0
+    inputs:
+      Dockerfile: 'Dockerfile-sqlite'
