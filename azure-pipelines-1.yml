@@ -20,6 +20,20 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
+          sed -i'' -e 's|<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0"/>|<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.1"/>|' src/SimplCommerce.WebHost/SimplCommerce.WebHost.csproj
+          sed -i'' -e 's|<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.0"/>|<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.1"/>|' src/SimplCommerce.WebHost/SimplCommerce.WebHost.csproj
+          
+          sed -i'' -e 's/UseSqlServer/UseSqlite/' src/SimplCommerce.WebHost/Program.cs
+          sed -i'' -e 's/UseSqlServer/UseSqlite/' src/SimplCommerce.WebHost/Extensions/ServiceCollectionExtensions.cs
+          
+          sed -i'' -e 's/UseNpgsql/UseSqlite/' src/SimplCommerce.WebHost/Program.cs
+          sed -i'' -e 's/UseNpgsql/UseSqlite/' src/SimplCommerce.WebHost/Extensions/ServiceCollectionExtensions.cs
+          
+          sed -i'' -e 's/·"DefaultConnection": ".*"/"DefaultConnection": "Data Source=simplcommerce.db"/' src/SimplCommerce.WebHost/appsettings.json
     - task: Docker@2
       displayName: Build an image
       inputs:
