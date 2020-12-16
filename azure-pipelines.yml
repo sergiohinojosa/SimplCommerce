@@ -7,7 +7,6 @@ trigger:
 - master
 
 jobs: 
-
 - job: LinuxRelease
   pool:
     vmImage: 'ubuntu-18.04'
@@ -43,5 +42,5 @@ jobs:
       summaryFileLocation: $(Build.SourcesDirectory)/coverlet/reports/Cobertura.xml  
   - task: ContainerBuild@0
     inputs:
-      Dockerfile: 'Dockerfile-sqlite'
+      Dockerfile: 'Dockerfile'
   
