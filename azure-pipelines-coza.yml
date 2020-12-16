@@ -2,9 +2,14 @@
 # Build and test ASP.NET Core projects targeting .NET Core.
 # Add steps that run tests, create a NuGet package, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+trigger:
+- main
+
+variables:
+  tag: '$(Build.BuildId)'
 
 jobs: 
-- job: LinuxRelease
+- job: ContainerCoza
   pool:
     vmImage: 'ubuntu-18.04'
   variables:
@@ -13,7 +18,9 @@ jobs:
   - task: ContainerBuild@0
     inputs:
       dockerRegistryServiceConnection: 'shinojosa DockerHub'
-      repository: 'simplcommerce-azure'
+      repository: shinojosa/simplecommerce-azure
       Dockerfile: shinojosa.Dockerfile
+      tags: |
+          $(tag)
+      
 
-  
