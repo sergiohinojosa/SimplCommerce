@@ -38,6 +38,6 @@ stages:
       displayName: Build an image
       inputs:
         command: build
-        dockerfile: 'Dockerfile-sqlite'
+        dockerfile: 'dotnet3.Dockerfile'
         tags: |
           $(tag)
